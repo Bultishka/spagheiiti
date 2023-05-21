@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33423.256
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spaghetti", "spaghetti\spaghetti.vcxproj", "{278135E8-7DCA-42EA-A99D-FFA2501ABD57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Debug|x64.ActiveCfg = Debug|x64
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Debug|x64.Build.0 = Debug|x64
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Debug|x86.ActiveCfg = Debug|Win32
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Debug|x86.Build.0 = Debug|Win32
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Release|x64.ActiveCfg = Release|x64
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Release|x64.Build.0 = Release|x64
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Release|x86.ActiveCfg = Release|Win32
+		{278135E8-7DCA-42EA-A99D-FFA2501ABD57}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81137D39-F68E-45CD-9032-F3203343DACE}
+	EndGlobalSection
+EndGlobal
