@@ -6,6 +6,12 @@ cl_field::cl_field(cl_base* p_head_object, string s_name) : cl_base(p_head_objec
 }
 
 
+void cl_field::set_columns(int columns)
+{
+	this->columns = columns;
+}
+
+
 void cl_field::ball_signal_begin(string& command)
 {
 }
@@ -18,13 +24,6 @@ void cl_field::ball_signal_move(string& command)
 
 void cl_field::signal_output(string& command)
 {
-	command = get_sub_objects()[0]->get_line() + " : ";
-	for (int i = 1; i < get_sub_objects().size() - 1; i++)
-	{
-		command += get_sub_objects()[i]->get_line() + " : ";
-	}
-	if (get_sub_objects().size() > 1)
-		command += get_sub_objects()[get_sub_objects().size() - 1]->get_line();
 }
 
 void cl_field::handler_panel(string& command)
@@ -38,27 +37,31 @@ void cl_field::handler_ball(string& command)
 	int i_line, i_column;
 	stringstream sin(command);
 	sin >> i_line >> i_column;
-	i_line -= 1;
 	i_column -= 1;
-	command = "";
-	if (field.size() == 1)
+	if (field[i_line - 1][i_column] == '0')
 	{
-		command = to_string(i_line+1) + " V";
-		emit_signal(SIGNAL_D(cl_field::ball_signal_move), command);
-	}
-	else if (field[i_line + 1][i_column] == '0')
-	{
-		command = to_string(i_line + 2);
-		if (i_line + 1 == field.size())
+		if (i_column + 1 != columns)
+			command = to_string(i_line + 1) + " : ";
+		else
+			command = to_string(i_line + 1) + "\n";
+
+		emit_signal(SIGNAL_D(cl_field::signal_output), command);
+		command = to_string(i_column + 1) + " " + to_string(i_line + 1);
+		if (i_line == field.size())
 			command += " V";
 		else command += " P";
 		emit_signal(SIGNAL_D(cl_field::ball_signal_move), command);
 	}
-	else if (field[i_line + 1][i_column] == '1')
+	else if (field[i_line - 1][i_column] == '1')
 	{
-		field[i_line + 1][i_column] = '0';
+		if (i_column + 1 != columns)
+			command = to_string(i_line) + " : ";
+		else
+			command = to_string(i_line) + "\n";
+
+		emit_signal(SIGNAL_D(cl_field::signal_output), command);
+		field[i_line - 1][i_column] = '0';
 	}
-	cout << i_line + 1 << " " << i_column+1 << "\n";
 }
 
 

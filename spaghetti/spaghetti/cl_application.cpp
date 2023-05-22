@@ -28,13 +28,12 @@ void cl_application::build_tree_objects() //метод построения дерева иерархии
 	field->set_connect(SIGNAL_D(cl_field::signal_output), output, HANDLER_D(cl_output::handler_field));
 
 	string command = "1";
-	
+	lever(this);
 	emit_signal(SIGNAL_D(cl_application::signal_input), command);
 	stringstream sin(data);
 	int columns, lines;
 	sin >> columns >> lines;
-
-	lever(this);
+	field->set_columns(columns);
 	for (int i = 0; i < columns; i++)
 	{
 		string name = to_string(i + 1);
@@ -73,7 +72,7 @@ int cl_application::exec_app() //метод выполнения основного алгоритма
 	string command = to_string(takt);
 	while (true)
 	{
-		if (command.find(":") != -1) break;
+		if (checker) break;
 		else emit_signal(SIGNAL_D(cl_application::signal_panel), command);
 		takt++;
 	}
@@ -106,4 +105,5 @@ void cl_application::handler_input(string& command)
 void cl_application::handler_panel(string& command)
 {
 	data = command;
+	checker = true;
 }

@@ -18,11 +18,8 @@ void cl_ball::signal_field(string& command)
 void cl_ball::handler(string& command)
 {
 	command = "";
-	set_line(i_line);
 	command = i_line + ' ' + get_name();
 	emit_signal(SIGNAL_D(cl_ball::signal_field), command);
-	set_line(i_line);
-	cout << get_line() << " " << get_name() << "\n";
 	if (checker == "V")
 	{
 		command = get_name();
@@ -34,5 +31,8 @@ void cl_ball::handler(string& command)
 void cl_ball::handler_move(string& command)
 {
 	stringstream sin(command);
-	sin >> i_line >> checker;
+	string n;
+	sin >> n;
+	if (n == get_name())
+		sin >> i_line >> checker;
 }

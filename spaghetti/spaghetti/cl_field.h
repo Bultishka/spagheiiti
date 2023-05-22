@@ -8,6 +8,7 @@ class cl_field : public cl_base
 	vector <string> field;
 public:
 	cl_field(cl_base* p_head_object, string s_name);
+	void set_columns(int columns);
 	vector<string> get_field();
 	void winners_signal(string& command);
 	void ball_signal_begin(string& command);

@@ -21,12 +21,6 @@ cl_base :: ~cl_base()
 }
 
 
-void cl_base::set_line(string line)
-{
-	this->line = line;
-}
-
-
 bool cl_base::set_name(string s_new_name) //сеттер имени объекта
 {
 	if (get_head() != nullptr) //проверка на наличие головного объекта
@@ -71,12 +65,6 @@ void cl_base::set_r(int enable) //установка состояния объекта
 string cl_base::get_name() //геттер имени объекта
 {
 	return s_name;
-}
-
-
-string cl_base::get_line()
-{
-	return line;
 }
 
 

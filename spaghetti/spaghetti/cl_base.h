@@ -31,7 +31,6 @@ private:
 	cl_base* p_head_object;
 	vector <cl_base*> p_sub_objects;
 	vector <o_sh> connects;
-	string line;
 	int is_ready = 0;
 	int o_class;
 public:
@@ -41,7 +40,6 @@ public:
 	bool set_name(string s_new_name);
 	void set_r(int enable = 1);
 	void set_class(int o_class);
-	void set_line(string s_line);
 
 	string get_line();
 	string get_name();

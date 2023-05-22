@@ -10,6 +10,7 @@
 class cl_application : public cl_base
 {
 	string data;
+	bool checker = false;
 public:
 	cl_application(cl_base* p_head_object);
 	void build_tree_objects();

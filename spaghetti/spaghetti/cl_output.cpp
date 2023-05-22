@@ -7,7 +7,7 @@ cl_output::cl_output(cl_base* p_head_object, string s_name) : cl_base(p_head_obj
 
 void cl_output::handler_field(string& command)
 {
-	cout << command << "\n";
+	cout << command;
 }
 
 

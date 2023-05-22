@@ -4,7 +4,8 @@
 
 class cl_ball : public cl_base
 {
-	string i_line = "0";
+	string i_line = "1";
+	string num;
 	string checker = "P";
 public:
 	cl_ball(cl_base* p_head_object, string s_name);
