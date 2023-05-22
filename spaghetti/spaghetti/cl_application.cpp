@@ -33,6 +33,7 @@ void cl_application::build_tree_objects() //метод построения дерева иерархии
 	stringstream sin(data);
 	int columns, lines;
 	sin >> columns >> lines;
+	field->setSize(lines, columns);
 
 	lever(this);
 	for (int i = 0; i < columns; i++)

@@ -37,9 +37,12 @@ void cl_panel::handler_application(string& command)
 }
 
 
-void cl_panel::handler_w_ball(string& command)
+void cl_panel::handler_w_ball(string& command) //"9 2"
 {
+	string pos;
+	stringstream sin(command);
+	sin >> pos >> pos;
 	if (winners.empty())
-		winners = command;
-	else winners += " : " + command;
+		winners = pos;
+	else winners += " : " + pos;
 }

@@ -11,37 +11,37 @@ void cl_field::ball_signal_begin(string& command)
 }
 
 
-void cl_field::ball_signal_move(string& command)
+void cl_field::ball_signal_fill(string& command)
 {
 }
 
 
 void cl_field::signal_output(string& command)
 {
-	command = get_sub_objects()[0]->get_line() + " : ";
-	for (int i = 1; i < get_sub_objects().size() - 1; i++)
+	command = to_string(positions[0]);
+	for (int i = 1; i < positions.size(); i++)
 	{
-		command += get_sub_objects()[i]->get_line() + " : ";
+		command += " : " + to_string(positions[i]);
 	}
-	if (get_sub_objects().size() > 1)
-		command += get_sub_objects()[get_sub_objects().size() - 1]->get_line();
 }
 
 void cl_field::handler_panel(string& command)
 {
 	emit_signal(SIGNAL_D(cl_field::ball_signal_begin), command);
+	emit_signal(SIGNAL_D(cl_field::signal_output), command);
 }
 
 
-void cl_field::handler_ball(string& command)
+void cl_field::handler_ball(string& command) // "9 2"
 {
 	int i_line, i_column;
 	stringstream sin(command);
 	sin >> i_line >> i_column;
-	i_line -= 1;
+	i_line = lines - i_line;
 	i_column -= 1;
 	command = "";
-	if (field.size() == 1)
+	positions[i_column] = i_line;
+	/*if (field.size() == 1)
 	{
 		command = to_string(i_line+1) + " V";
 		emit_signal(SIGNAL_D(cl_field::ball_signal_move), command);
@@ -58,14 +58,12 @@ void cl_field::handler_ball(string& command)
 	{
 		field[i_line + 1][i_column] = '0';
 	}
-	cout << i_line + 1 << " " << i_column+1 << "\n";
+	cout << i_line + 1 << " " << i_column+1 << "\n";*/
+	
 }
 
 
 void cl_field::handler_application(string& command)
 {
-	if ((int)command.find(" ") == -1)
-	{
-		field.push_back(command);
-	}
+	emit_signal(SIGNAL_D(cl_field::ball_signal_fill), command);
 }

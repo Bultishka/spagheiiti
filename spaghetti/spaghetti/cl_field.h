@@ -5,13 +5,15 @@
 class cl_field : public cl_base
 {
 	int lines, columns;
-	vector <string> field;
+	/*vector <string> field;*/
+	vector<int> positions;
 public:
 	cl_field(cl_base* p_head_object, string s_name);
+	void setSize(int lines, int columns);
 	vector<string> get_field();
 	void winners_signal(string& command);
 	void ball_signal_begin(string& command);
-	void ball_signal_move(string& command);
+	void ball_signal_fill(string& command);
 	void signal_output(string& command);
 	void handler_panel(string& command);
 	void handler_ball(string& command);
